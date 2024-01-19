@@ -1,0 +1,7 @@
+<h1>Cancella video</h1>
+<p>Sei sicuro di voler eliminare il seguente video:</p>
+<strong>{{ data.campaign.title }} ({{ data.campaign.producer }})</strong>
+<div class="text-right mt-4">
+  <button mat-raised-button color="warn" (click)="confirm()">Elimina <mat-icon>delete</mat-icon></button>
+  <button mat-raised-button color="" class="ml-1" (click)="abort()">Annulla</button>
+</div>

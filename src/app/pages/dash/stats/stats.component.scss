@@ -1,0 +1,32 @@
+@import '../../../../assets/css/variables';
+
+.cards{
+  margin-top: 20px;
+  margin-bottom: 50px;
+
+  .card {
+    color: $color-primary;
+    cursor: pointer;
+
+    .card-data-counter {
+      margin-left: 30px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .card-data-perc {
+      margin-left: 20px;
+      color: $color-success;
+      font-size: 16px;
+    }
+
+    .card-label {
+      margin-left: 54px;
+      font-size: 18px;
+    }
+  }
+
+  .card.selected {
+    border-left: 5px solid $color-primary;
+  }
+}

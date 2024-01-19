@@ -1,0 +1,54 @@
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+  <div class="row d-flex justify-content-md-center">
+    <div class="col col-lg-12">
+      <div class="card">
+        <div class="logo-container">
+          <a routerLink="/">
+            <img src="assets/images/logo-roundapp.png" class="logo">
+          </a>
+        </div>
+        <div class="card-content">
+          <h1>Conferma indirizzo Email</h1>
+
+          <ng-container *ngIf="!verified; else verifiedBlock">
+            <ng-container [ngSwitch]="sent">
+              <div *ngSwitchCase="1">
+                Richiesta nuovo link di attivazione per l'indirizzo <strong>{{ email }}</strong> in corso. Ti preghiamo di attendere qualche secondo.
+              </div>
+              <div *ngSwitchCase="2">
+                Verifica dell'indirizzo <strong>{{ email }}</strong> in corso. Ti preghiamo di attendere qualche secondo.
+              </div>
+              <div *ngSwitchCase="3">
+                Abbiamo inviato una email all'indirizzo <strong>{{ email }}</strong>. Segui le istruzioni per verificare il tuo account.
+              </div>
+              <div *ngSwitchCase="-1">
+                <div>Il link di attivazione <strong>{{ email }}</strong> non è più valido.</div>
+                <div class="text-center" style="margin-top: 20px;">
+                  <button type="submit" class="btn btn-blue text-center" style="width:auto;" (click)="resend()">Richiedi un nuovo codice</button>
+                </div>
+              </div>
+              <div *ngSwitchCase="-2">
+                Ooooops, qualcosa è andato storno! Si prega di riprovare più tardi.
+              </div>
+              <div *ngSwitchDefault>
+                <div>Indirizzo <strong>{{ email }}</strong> non verificato. Segui le istruzioni che ti sono state inviate via email.</div><br><br>
+                <div><b>NESSUNA EMAIL RICEVUTA?</b> Controlla in SPAM oppure clicca il tasto REINVIA per ricevere nuovamente il messaggio.</div><br>
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-blue text-center" (click)="resend()">Reinvia</button>
+                  <a class="ml-3 text-sm" (click)="logout()" i18n="logout|Logout">Logout</a>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+
+          <ng-template #verifiedBlock>L'indirizzo <strong>{{ email }}</strong> è stato confermato. A breve sarai reindirizzato.</ng-template>
+
+          <div class="row mb-4 px-3" style="margin-top: 20px;">
+            <a class="ml-auto mb-0 text-sm" routerLink="/auth/login" i18n="back|Go Back">Torna Indietro</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

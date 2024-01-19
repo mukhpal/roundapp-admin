@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light sticky-top navbarFixed">
+  <!-- <a class="navbar-brand" href="#">Navbar</a>-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <!--  <mat-form-field style="width: 50%;">
+      <mat-icon matPrefix>search &nbsp;</mat-icon>
+      <input type="text" matInput placeholder="Cerca">
+    </mat-form-field> -->
+
+    <div class="d-flex justify-content-between">
+      <div style="min-width: 200px;">
+        <button type="button" id="sidebarCollapse" class="btn" (click)="sideToggle()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="d-inline" style="margin-left: 30px; vertical-align: sub;">{{http.title}}</h1>
+      </div>
+      <div class="d-none d-md-block" style="min-width: 200px;">
+        <h1 style="margin: 0">
+          <img src="assets/images/logo-200.png" style="height: 25px; margin-right: 10px; vertical-align: sub">
+          <span class="text-primary" style="font-weight: bold">ROUND</span>
+          <span class="text-secondary" style="font-weight: bold">APP</span>
+        </h1>
+      </div>
+      <div style="min-width: 200px;">
+        <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary" [ngStyle]="{
+            'background-image': user.image ? 'url(' + user.image.url + ')' : 'none',
+            'background-position': 'center',
+            'background-size': 'contain'
+          }">
+          <mat-icon *ngIf="!user.image" aria-hidden="false" aria-label="person">
+            person
+          </mat-icon>
+        </button>
+        <span *ngIf="user && user.name" [matMenuTriggerFor]="menu" class="btn"> {{user.name}}</span>
+      </div>
+    </div>
+
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="profile()">
+        <mat-icon>account_circle</mat-icon>Profilo
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>Logout
+      </button>
+    </mat-menu>
+  </div>
+</nav>

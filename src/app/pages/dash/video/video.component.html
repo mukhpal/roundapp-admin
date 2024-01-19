@@ -1,0 +1,251 @@
+<div class="container-fluid mb-5">
+  <form *ngIf="!published; else done" action="" [formGroup]="form">
+    <div class="row justify-content-md-center">
+      <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+
+        <div class="form-group">
+          <label class="d-block">Importa video <mat-icon matTooltip="Per una risoluzione migliore importa il video in formato mp4">info</mat-icon></label>
+          <div style="height: 300px;">
+            <app-fileupload
+              [fileData]="fileVideo"
+              [fileType]="'video'"
+              [errorMessage]="videoError"
+              [fileCategory]="'video'"
+              (fileSelected)="videoError=null"
+              (uploadSuccess)="setFileId($event.video, 'videoCtrl')">
+              <div>
+                <h2>Trascina qui il tuo video</h2>
+                <div class="text-center">
+                  <mat-icon class="icon-upload">cloud_upload</mat-icon>
+                </div>
+              </div>
+            </app-fileupload>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block">Inserisci una copertina <mat-icon matTooltip="Importa copertina">info</mat-icon></label>
+          <mat-card>
+            <mat-card-content>
+              <div class="position-relative" style="height: 70px;">
+                <div class="d-inline-block" style="height: 100%; width: 70px">
+                  <app-fileupload
+                    [fileData]="fileVideoThumbnail"
+                    [fileType]="'image'"
+                    [fileCategory]="'video.thumbnail'"
+                    (fileSelected)="videoThumbnailError=null"
+                    (uploadSuccess)="setFileId($event.file, 'videoThumbnailCtrl')">
+                    <div class="text-center">
+                      <mat-icon class="text-secondary">camera_alt</mat-icon>
+                    </div>
+                  </app-fileupload>
+                </div>
+                <div class="pl-5 text-secondary d-inline-block">Importa copertina</div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+        <div class="form-group">
+          <label class="d-block" for="title">Titolo</label>
+          <mat-form-field>
+            <input id="title" type="text" matInput formControlName="campaignTitleCtrl" placeholder="Inserisci il titolo del video">
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <label class="d-block" for="description">Descrizione</label>
+          <mat-form-field>
+            <input id="description" type="text" matInput formControlName="campaignDescriptionCtrl" placeholder="Descrizione breve">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block">Seleziona i tags</label>
+          <mat-form-field>
+            <mat-chip-list #tagCtrl aria-label="tags selection" formControlName="tagCtrl" multiple>
+              <mat-chip *ngFor="let tag of tagList" [value]="tag.id" selectable="true"
+                        (click)="toggleTag(tag.id)">{{tag.code}}
+                <mat-icon>close</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+            <input [matChipInputFor]="tagCtrl">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block" for="ageRange">Fasce d'età</label>
+          <mat-form-field appearance="outline">
+            <mat-select id="ageRange" formControlName="ageCtrl" placeholder="Inserisci fascia d'età">
+              <mat-option *ngFor="let item of ageList" [value]="item.id">{{item.text}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block" for="gender">Genere</label>
+          <mat-form-field appearance="outline">
+            <mat-select id="gender" formControlName="genderCtrl" placeholder="Inserisci genere">
+              <mat-option *ngFor="let item of genderList" [value]="item.id">{{item.text}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block" for="geolocation">Geolocalizzazione</label>
+          <mat-form-field>
+            <input id="geolocation" formControlName="geolocationCtrl" placeholder="Inserisci indirizzo" matInput ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="updateGeolocation($event)"/>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block" for="budget">Budget</label>
+          <mat-form-field>
+            <input id="budget" type="text" matInput formControlName="budgetCtrl" placeholder="Budget">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <small class="text-default">Ottimizza il tuo pubblico o aggiungi budget per raggiungere più utenti</small>
+          <div>
+            <div class="pull-left"><label class="d-block">{{ form.controls.peopleCtrl.value }} persone al giorno</label></div>
+            <div class="pull-right text-default">di {{peopleMax}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <mat-slider style="width: 100%;" [min]="peopleMin" [max]="peopleMax" formControlName="peopleCtrl" [thumbLabel]="true"></mat-slider>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block" for="paymentType">Paga gli utenti per <mat-icon matTooltip="Specifica il criterio remunerativo per gli utenti">info</mat-icon></label>
+          <mat-form-field appearance="outline">
+            <mat-select id="paymentType" formControlName="paymentTypeCtrl" placeholder="Seleziona una scelta">
+              <mat-option *ngFor="let item of paymentTypeList" [value]="item.id">{{item.text}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center mb-5">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <h1 class="title"><strong>Informazione azienda</strong></h1>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center">
+
+      <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+        <div class="form-group">
+          <label class="d-block" for="producerName">Seleziona Azienda</label>
+          <mat-radio-group aria-label="Select an option">
+            <div>
+              <mat-card class="card-selectable" (click)="selectProducer()">
+                <mat-card-content>
+                  <div class="d-flex">
+                    <mat-icon class="p-2">add</mat-icon>
+                    <span class="text-secondary p-2 mt-3">Nuova Azienda</span>
+                    <mat-radio-button class="ml-auto p-2 mt-3" value="" [checked]="isProducerSelected('')"></mat-radio-button>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div class="producers-container mt-3">
+              <mat-card class="card-selectable mb-3" *ngFor="let producer of producerList" (click)="selectProducer(producer)">
+                <mat-card-content>
+                  <div class="d-flex">
+                    <div class="producer-image-container">
+                      <img *ngIf="producer.image; else defaultIcon" [src]="producer.image.url">
+                      <ng-template #defaultIcon><mat-icon class="icon-select-image p-2">insert_photo</mat-icon></ng-template>
+                    </div>
+                    <span class="pl-5 text-secondary p-2 mt-3">{{producer.name}}</span>
+                    <mat-radio-button class="ml-auto p-2 mt-3" value="{{producer.id}}" [checked]="isProducerSelected(producer.id)"></mat-radio-button>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+        <div class="form-group">
+          <label class="d-block">Inserisci logo azienda <mat-icon matTooltip="Importa logo">info</mat-icon></label>
+          <mat-card>
+            <mat-card-content>
+              <div style="height: 70px;">
+                <div class="d-inline-block" style="height: 100%; width: 70px">
+                  <app-fileupload [fileData]="fileProducerImage"
+                                  [fileType]="'image'"
+                                  [fileCategory]="'producer.image'"
+                                  (fileSelected)="producerImageError=null"
+                                  (uploadSuccess)="setFileId($event.file, 'producerImageCtrl')">
+                    <div class="text-center">
+                      <mat-icon class="text-secondary">camera_alt</mat-icon>
+                    </div>
+                  </app-fileupload>
+                </div>
+                <div class="pl-5 text-secondary d-inline-block">Importa il logo</div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block" for="producerName">Nome azienda</label>
+          <mat-form-field>
+            <input id="producerName" type="text" matInput formControlName="producerNameCtrl" placeholder="Inserisci nome azienda">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block" for="producerDescription">Descrizione</label>
+          <mat-form-field>
+            <input id="producerDescription" type="text" matInput formControlName="producerDescriptionCtrl" placeholder="Inserisci descrizione">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block" for="producerWebsite">Sito web</label>
+          <mat-form-field>
+            <input id="producerWebsite" type="text" matInput formControlName="producerWebsiteCtrl" placeholder="Inserisci sito web">
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center mb-5">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <h1 class="title"><strong>Preview</strong></h1>
+        <mat-divider></mat-divider>
+        <div class="text-center">
+          <img src="assets/images/roundapp-campaign-preview.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <mat-checkbox formControlName="agreeCtrl">Ho letto e accetto <a class="text-secondary">Termini e Condizioni</a>
+        </mat-checkbox>
+        <div>
+          <button mat-raised-button type="button" class="btn btn-lg btn-publish" [disabled]="!canSubmitForm()" (click)="publish()">Pubblica</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+<ng-template #done>
+  <div class="done text-center">
+    <mat-icon class="text-success">done</mat-icon>
+    <h1>Campagna caricata con successo</h1>
+    <p>La tua campagna è stata caricata correttamente, per visualizzare le statistiche vai a <a routerLink="/dash/stats">i miei video</a></p>
+  </div>
+</ng-template>

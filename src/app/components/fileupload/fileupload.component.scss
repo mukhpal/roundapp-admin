@@ -1,0 +1,136 @@
+@import '../../../assets/css/variables';
+
+.fileupload {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .e-uploader {
+
+    .e-upload {
+      border: none;
+      height: 100%;
+    }
+
+    .e-file-select-wrap {
+      padding: 0;
+      height: 100%;
+    }
+
+    .e-css.e-btn {
+      width: 100%;
+      height: 100%;
+    }
+
+    .e-file-drop {
+      display: none;
+    }
+
+    .e-upload-files {
+      display: none;
+    }
+  }
+
+  .media {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+
+    video {
+      -moz-box-flex: 0;
+      margin: 0 auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    img {
+      -moz-box-flex: 0;
+      margin: 0 auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  .overlay {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+
+    .overlay-content {
+      width: 100%;
+      text-align: center;
+    }
+
+    .overlay-content-percent {
+      color: white;
+      vertical-align: text-top;
+      font-weight: bold;
+    }
+    mat-progress-bar {
+      width: 90%;
+      display: inline-block;
+    }
+  }
+
+  .media-info {
+    z-index: 6;
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.7);
+
+    .media-title {
+      text-align: left;
+      color: #ffffff;
+    }
+
+    .media-buttons {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+  }
+
+  .media-info.show {
+    display: block;
+  }
+
+  .cover {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed $color-primary;
+  }
+
+  .cover::content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
+.fileupload.error {
+  .cover {
+    border-color: $color-error;
+  }
+}

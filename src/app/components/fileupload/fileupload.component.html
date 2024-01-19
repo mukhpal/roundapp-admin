@@ -1,0 +1,44 @@
+<div [ngClass]="{fileupload: true, error: error && error !== ''}">
+  <ejs-uploader multiple="false"
+                autoUpload="true"
+                [buttons]="{browse:''}"
+                [allowedExtensions]="allowedExtensions"
+                [maxFileSize]="maxFileSize"
+                [asyncSettings]="path"
+                (uploading)="onUploading($event)"
+                (removing)="onRemoving($event)"
+                (progress)="onProgress($event)"
+                (success)="onUploadSuccess($event)"
+                (failure)="onUploadFailure($event)"
+                (selected)="onSelect($event)"></ejs-uploader>
+
+  <ng-container *ngIf="(progress || progress === 0)">
+    <div class="overlay">
+      <div class="overlay-content">
+        <div class="overlay-content-percent">{{ progress }}%</div>
+        <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="this.file">
+    <div [ngSwitch]="this.type" class="media" (mouseenter)="showInfo($event)" (mouseleave)="hideInfo($event)">
+      <video *ngSwitchCase="'video'" controls>
+        <source [type]="file.mime_type" [src]="file.url">
+      </video>
+      <img *ngSwitchCase="'image'" [src]="file.url">
+    </div>
+    <div [ngClass]="{ 'media-info': true, show: info}" (mouseenter)="showInfo($event)" (mouseleave)="hideInfo($event)">
+      <h3 class="media-title float-left">{{file.name}} ({{file.size | filesize }})</h3>
+      <div class="media-buttons float-right">
+        <button type="button" mat-mini-fab color="primary" aria-label="Delete video" (click)="deleteFile()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="cover">
+    <ng-content></ng-content>
+  </div>
+</div>

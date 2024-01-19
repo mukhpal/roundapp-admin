@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <mat-tab-group>
+    <mat-tab label="Advertisers">
+
+      <ng-container *ngIf="advertiserDataSource && !advertiserLoadingDataSource; else loading">
+        <mat-table [dataSource]="advertiserDataSource" class="mat-elevation-z8">
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          </ng-container>
+
+          <!-- Type Column -->
+          <ng-container matColumnDef="type">
+            <mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+          </ng-container>
+
+          <!-- Created At Column -->
+          <ng-container matColumnDef="created_at">
+            <mat-header-cell *matHeaderCellDef>Data iscrizione</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.created_at | date}} </mat-cell>
+          </ng-container>
+
+          <!-- Verified Column -->
+          <ng-container matColumnDef="verified">
+            <mat-header-cell *matHeaderCellDef>Verificato</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.verified}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="advertiserDisplayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: advertiserDisplayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[50, 100, 200]" showFirstLastButtons></mat-paginator>
+      </ng-container>
+
+    </mat-tab>
+    <mat-tab label="Video">Video</mat-tab>
+  </mat-tab-group>
+</div>
+
+
+<ng-template #loading>
+  <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+</ng-template>

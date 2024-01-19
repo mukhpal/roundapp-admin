@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="it-IT" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="c866947466f8118c0fa546d008f79791073df1fb" datatype="html">
+        <source>Torna Indietro</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/password/forgot/forgot.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <note priority="1" from="description">Go Back</note>
+        <note priority="1" from="meaning">back</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

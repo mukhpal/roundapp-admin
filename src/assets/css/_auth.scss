@@ -1,0 +1,56 @@
+button:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0
+}
+
+a {
+  color: inherit;
+  cursor: pointer
+}
+
+.card {
+  box-shadow: 0px 4px 8px 0px #757575;
+  border-radius: 0px;
+  max-width: 600px;
+  min-height: 400px;
+  margin: 0 auto;
+}
+
+.card-content {
+  margin: 20px 60px
+}
+
+.logo-container {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.logo {
+  width: 100px;
+}
+
+.border-line {
+  border-right: 1px solid #EEEEEE
+}
+
+.btn-blue {
+  background-color: #1A237E;
+  width: 150px;
+  color: #fff;
+  border-radius: 2px
+}
+
+.bg-blue {
+  color: #fff;
+  background-color: #1A237E
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    box-shadow: none;
+    border-radius: 0px;
+  }
+}

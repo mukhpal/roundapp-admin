@@ -1,0 +1,138 @@
+@import '../../../../assets/css/variables';
+
+mat-form-field {
+  width: 100%
+}
+
+mat-icon {
+  vertical-align: middle;
+}
+
+mat-card {
+  mat-card-content {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  mat-icon {
+    font-size: 50px;
+    width: 50px;
+    height: 50px;
+    color: $color-primary;
+  }
+}
+
+mat-chip {
+
+}
+
+button {
+  outline: none;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: $color-primary !important;
+}
+
+.form-group {
+  label {
+    font-size: 20px;
+  }
+}
+
+.btn-publish {
+  width: 15rem;
+  font-size: 20px;
+  padding: 8px;
+  color: $color-primary;
+  background: $color-success;
+  border-radius: 50px;
+}
+
+
+
+.elementToFadeInAndOut {
+  opacity: 1;
+  animation: fade 2s linear;
+}
+
+/*
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}*/
+
+
+/*
+.file-video-thumbnail-container {
+  left:30px;
+  line-height: 100px;
+}
+*/
+
+
+.icon-upload {
+  font-size: 120px;
+  width: 200px;
+  height: 120px;
+  color: $color-secondary;
+}
+
+.producers-container {
+  height: 350px;
+  overflow-y: auto;
+
+  .producer-image-container {
+    background-color: $color-primary;
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    mat-icon {
+      padding: 0 !important;
+      color: white;
+      font-size: 58px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.card-selectable {
+  cursor: pointer;
+}
+
+
+.done {
+  margin-top: 100px;
+  mat-icon {
+    width: 150px;
+    height: 150px;
+    font-size: 150px;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  p {
+    display: inline-block;
+    margin: 0 auto;
+    max-width: 450px;
+    font-size: 1.2em;
+    line-height: 1.5em;
+  }
+  a {
+    color: $color-success;
+  }
+}

@@ -1,0 +1,38 @@
+<ng-sidebar-container style="height: 100vh;overflow: hidden;">
+
+  <!-- A sidebar -->
+  <ng-sidebar [(opened)]="_opened" position="left" mode="push" autoCollapseWidth=500>
+
+    <h1 class="inverse" style="margin: 1rem;">RoundApp</h1>
+    <ul class="list-group backgroundList" style="padding-bottom: 1rem;">
+      <li class="list-group-item backgroundList"><a style="color: white;" routerLink="index"
+                                                    routerLinkActive="active-link">Dashboard</a></li>
+      <li class="list-group-item backgroundList"><a style="color: white;" routerLink="stats"
+                                                    routerLinkActive="active-link">I miei video</a></li>
+      <li class="list-group-item backgroundList"><a style="color: white;" routerLink="video"
+          routerLinkActive="active-link">Nuovo video</a></li>
+    </ul>
+
+    <span style="padding-left: 1.25rem;"><strong>Impostazioni</strong></span>
+    <ul class="list-group backgroundList" style="padding-bottom: 1rem;">
+      <li class="list-group-item backgroundList"><a style="color: white;" routerLink="profile"
+                                                    routerLinkActive="active-link">Profilo</a></li>
+
+      <ng-container *ngIf="isAdmin">
+        <li class="list-group-item backgroundList"><a style="color: white;" routerLink="admin"
+                                                      routerLinkActive="active-link">Admin</a></li>
+      </ng-container>
+
+    </ul>
+
+  </ng-sidebar>
+
+  <!-- Page content -->
+  <div ng-sidebar-content>
+    <app-header class="sticky-top" [inputSide]="_opened" (action)="actionPages($event)" [userData]="user"></app-header>
+    <div class="mainContent sticky" style="background-color: #F8F8F8 !important;">
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
+    </div>
+  </div>
+
+</ng-sidebar-container>

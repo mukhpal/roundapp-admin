@@ -1,0 +1,33 @@
+.formHeader{
+    position: relative
+}
+
+.md-form .prefix {
+    top: 1rem;
+    left: 1rem;
+    font-size: 1rem;
+}
+
+.iconMenu {
+  color: #337ab7;
+  cursor: pointer;
+}
+
+.navbarFixed{
+  /* position: -webkit-sticky;
+  position: sticky;
+  top: 0px; */
+  width: 100%;
+ /*  z-index: 2; */
+ height: min-content;
+  background: white;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  display: block !important;
+}
+
+.navbar {
+  box-shadow:  0 5px 3px -3px #ccc;
+}
+

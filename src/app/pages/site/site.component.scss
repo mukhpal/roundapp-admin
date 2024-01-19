@@ -1,0 +1,30 @@
+@import "../../../assets/css/auth";
+
+h2 {
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 28px;
+}
+img {
+  height: 100%;
+  max-height: 40vh;
+  margin-top: 10vh;
+
+}
+
+a {
+  color: #245374;
+}
+
+.container {
+  text-align: center;
+}
+
+.social {
+  font-weight: 100;
+  font-size: 30px;
+}
+.social i {
+  font-size: 55px;
+  margin: 5px
+}

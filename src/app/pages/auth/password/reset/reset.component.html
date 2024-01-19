@@ -1,0 +1,66 @@
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+  <div class="row d-flex justify-content-md-center">
+    <div class="col col-lg-12">
+      <div class="card">
+        <div class="logo-container">
+          <a routerLink="/">
+            <img src="assets/images/logo-roundapp.png" class="logo">
+          </a>
+        </div>
+        <div class="card-content">
+          <h1>Reset Password</h1>
+          <form class="form-password-reset" [formGroup]="form">
+            <ng-container *ngIf="!sent; else sentBlock">
+
+              <div class="form-group">
+                Indirizzo email: <b>{{ this.email }}</b>
+              </div>
+
+              <div class="form-group">
+                <label class="mb-1">Nuova Password</label>
+                <mat-form-field appearance="outline" style="width: 100%">
+                  <input matInput type="password" name="password" placeholder="Insirisci una nuova password" formControlName="password" />
+                </mat-form-field>
+                <ng-container *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                  <ng-container *ngFor="let error of f.password.errors | keyvalue">
+                    <ng-container *ngIf="messages.hasOwnProperty(error.key) && messages[error.key].length">
+                      <mat-error *ngFor="let message of messages[error.key]" class="invalid-feedback"
+                                 [innerHTML]="message.replace('{attribute}', 'Password').replace('{value}', f.password.value)">
+                      </mat-error>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </div>
+
+              <div class="form-group">
+                <label class="mb-1">Conferma Password</label>
+                <mat-form-field appearance="outline" style="width: 100%">
+                  <input matInput type="password" name="password_confirmation" placeholder="Conferma la password" formControlName="password_confirmation" pattern="{{ f.password.value }}" />
+                </mat-form-field>
+                <ng-container *ngIf="f.password_confirmation.invalid && (f.password_confirmation.dirty || f.password_confirmation.touched)">
+                  <ng-container *ngFor="let error of f.password_confirmation.errors | keyvalue">
+                    <ng-container *ngIf="messages.hasOwnProperty(error.key) && messages[error.key].length">
+                      <mat-error *ngFor="let message of messages[error.key]" class="invalid-feedback"
+                                 [innerHTML]="message.replace('{attribute}', 'Conferma Password').replace('{value}', f.password_confirmation.value)">
+                      </mat-error>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </div>
+
+              <div class="row mb-3 px-3">
+                <button type="submit" class="btn btn-blue text-center" (click)="reset()" [disabled]="form.invalid">Invia</button>
+              </div>
+            </ng-container>
+
+            <ng-template #sentBlock>La password è stata modificata con <b>successo</b>. A breve verrai reindirizzato alla pagina di login.</ng-template>
+
+            <div class="row mb-4 px-3" style="margin-top: 20px;">
+              <a class="ml-auto mb-0 text-sm" routerLink="/auth/login" [state]="{ data : { email: email }}" i18n="back|Go Back">Torna Indietro</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,198 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~node_modules/bootstrap/scss/bootstrap';
+@import '../node_modules/dropzone/dist/min/dropzone.min.css';
+@import 'assets/css/variables';
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-inputs/styles/material.css';
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+@import '../node_modules/scss-spinners/spinners';
+
+
+$fa-font-path: "~node_modules/font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
+@font-face {
+  font-family: Montserrat;
+  src: url('assets/fonts/Montserrat-Regular.ttf') format('opentype');
+}
+
+.ng-sidebar {
+    background: $color-primary;
+}
+
+.ng-sidebar--left {
+    color: white !important;
+    background: $color-primary;
+}
+
+.md-form input[type=text],
+.md-form input[type=password],
+.md-form input[type=email],
+.md-form input[type=url],
+.md-form input[type=time],
+.md-form input[type=date],
+.md-form input[type=datetime-local],
+.md-form input[type=tel],
+.md-form input[type=number],
+.md-form input[type=search-md],
+.md-form input[type=search],
+.md-form textarea.md-textarea{
+    border-bottom: 1px solid black !important;
+}
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font: 400 14px/18px Montserrat, "Helvetica Neue", sans-serif !important;
+  font-style: normal;
+  font-weight: normal;
+  color: $color-primary;
+  background-image: url('assets/images/roundapp-bkg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+ }
+
+ .mat-card-header-text{
+     display: none !important;
+ }
+
+.ng-sidebar__content{
+    /* overflow: hidden !important; */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper{
+    background-color: white;
+    padding: 0;
+}
+
+app-header {
+  .navbar-toggler-icon {
+    display: none !important;
+  }
+  button.navbar-toggler {
+    display: none !important;
+  }
+}
+
+
+h1,h2,h3 {
+  color: $color-primary;
+}
+
+h1.inverse,h2.inverse,h3.inverse {
+  color: $white;
+}
+
+input, label, mat-card-title {
+  color: $color-primary !important;
+}
+
+a,button {
+  outline: none !important;
+}
+
+mat-button-toggle.mat-button-toggle-checked {
+  background-color: $color-success !important;
+
+}
+mat-button-toggle.mat-button-toggle-appearance-standard {
+  color: $color-primary;
+}
+mat-button-toggle.mat-button-toggle-appearance-standard.mat-button-toggle-checked {
+  color: $white;
+  font-weight: bold;
+}
+
+
+.title {
+  font-family: Montserrat, "Helvetica Neue", sans-serif !important;
+  font-style: normal;
+  font-weight: 600;
+  /*font-size: 20px;*/
+  line-height: 24px;
+  padding-top: 1rem;
+  color: $color-primary;
+ }
+
+.link {
+  cursor: pointer;
+  color: $color-primary !important;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.mat-chip.mat-standard-chip.mat-primary {
+  cursor: pointer;
+  background-color: white !important;
+  border: 2px solid $color-primary;
+  color: $color-primary !important;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: $color-success !important;
+  border: 2px solid $color-success;
+  color: $color-primary !important;
+  font-weight: bold;
+}
+
+.mat-radio-outer-circle {
+  border-color: $color-primary !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $color-primary !important;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: $color-success !important;
+}
+
+.mat-accent .mat-slider-track-fill, .mat-accent .mat-slider-thumb, .mat-accent .mat-slider-thumb-label{
+  background-color: $color-success !important;
+}
+
+.mat-progress-bar-fill::after {
+  background-color: $color-success !important;
+}
+
+mat-chip > .mat-icon {
+  display: none !important;
+}
+
+mat-chip.mat-chip-selected > .mat-icon {
+  display: inline-block !important;
+}
+
+.text-primary {
+  color: $color-primary !important;
+}
+
+.text-secondary {
+  color: $color-secondary !important;
+}
+
+.text-success {
+  color: $color-success !important;
+}
+
+.text-default {
+  color: $color-default;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: $color-primary !important;
+}
+
+
+mat-icon {
+  color: $color-primary;
+}

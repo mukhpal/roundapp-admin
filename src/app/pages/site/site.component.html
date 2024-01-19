@@ -1,0 +1,16 @@
+<div class="container">
+  <img src="assets/images/logo-roundapp.png">
+  <h2>Coming Soon</h2>
+  <div class="social">
+    <a href="https://www.facebook.com/roundapp.it/"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com/roundapp.it"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/company/roundapp-it"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:info@roundapp.it"><i class="fas fa-envelope"></i></a>
+  </div>
+  <br><br><br>
+  <a *ngIf="isGuest; else enterBlock" class="btn btn-blue" routerLink="/auth/login">Accedi</a>
+
+  <ng-template #enterBlock>
+    <a class="btn btn-blue" routerLink="{{ redirectUrl }}">Entra</a>
+  </ng-template>
+</div>

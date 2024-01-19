@@ -1,0 +1,44 @@
+@import '../../../../assets/css/variables';
+
+.data-card {
+
+  .data-footer {
+    color: $color-default;
+    font-weight: lighter;
+  }
+
+  .data-footer {
+    color: $color-default;
+    font-weight: lighter;
+
+    mat-icon {
+      vertical-align: middle;
+    }
+  }
+
+}
+
+.stats-card {
+
+  .stats-icon {
+    font-size: 80px;
+    width: 80px;
+    height: 80px;
+    color: white;
+    background-color: $color-primary;
+    border-radius: 20px;
+  }
+
+  .stats-title {
+    color: $color-default;
+    font-weight: lighter;
+  }
+
+  .stats-value {
+    margin-top: 15px;
+    font-size: 30px;
+    color: $color-success;
+  }
+
+}
+
